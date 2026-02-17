@@ -1,4 +1,4 @@
-package com.example.metaia_flutter
+package com.metaia.flutter_app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -105,8 +105,8 @@ class ApiService {
     return await _dio.get(
       ApiConstants.tailors,
       queryParameters: {
-        if (specialization != null) 'specialization': specialization,
-        if (minRating != null) 'minRating': minRating,
+        'specialization': ?specialization,
+        'minRating': ?minRating,
       },
     );
   }

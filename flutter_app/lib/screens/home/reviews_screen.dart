@@ -19,7 +19,10 @@ class ReviewsScreen extends StatelessWidget {
               Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.arrow_back_rounded, color: AppColors.maroon),
+                    icon: Icon(
+                      Icons.arrow_back_rounded,
+                      color: AppColors.maroon,
+                    ),
                     onPressed: () => context.go('/welcome'),
                   ),
                   const Spacer(),

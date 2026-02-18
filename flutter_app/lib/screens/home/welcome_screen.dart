@@ -10,113 +10,174 @@ class _GarmentItem {
   final String name;
   final String? assetPath;
   final IconData fallbackIcon;
-  const _GarmentItem(this.name,
-      {this.assetPath, required this.fallbackIcon});
+  const _GarmentItem(this.name, {this.assetPath, required this.fallbackIcon});
 }
 
 const _menItems = [
-  _GarmentItem('Shirt',
-      assetPath: 'assets/garments/men/shirt.jpg',
-      fallbackIcon: Icons.dry_cleaning_outlined),
-  _GarmentItem('Kurta',
-      assetPath: 'assets/garments/men/kurta.jpg',
-      fallbackIcon: Icons.style_outlined),
-  _GarmentItem('Blazer',
-      assetPath: 'assets/garments/men/blazer.jpg',
-      fallbackIcon: Icons.work_outline),
-  _GarmentItem('Trouser / Pant',
-      assetPath: 'assets/garments/men/trouser.jpg',
-      fallbackIcon: Icons.straighten_outlined),
-  _GarmentItem('Kurta-Pyjama',
-      assetPath: 'assets/garments/men/kurta_pyjama.jpg',
-      fallbackIcon: Icons.style),
-  _GarmentItem('Pathani Suit',
-      assetPath: 'assets/garments/men/pathani_suit.jpg',
-      fallbackIcon: Icons.dry_cleaning),
-  _GarmentItem('Sherwani',
-      assetPath: 'assets/garments/men/sherwani.jpg',
-      fallbackIcon: Icons.diamond_outlined),
+  _GarmentItem(
+    'Shirt',
+    assetPath: 'assets/garments/men/shirt.jpg',
+    fallbackIcon: Icons.dry_cleaning_outlined,
+  ),
+  _GarmentItem(
+    'Kurta',
+    assetPath: 'assets/garments/men/kurta.jpg',
+    fallbackIcon: Icons.style_outlined,
+  ),
+  _GarmentItem(
+    'Blazer',
+    assetPath: 'assets/garments/men/blazer.jpg',
+    fallbackIcon: Icons.work_outline,
+  ),
+  _GarmentItem(
+    'Trouser / Pant',
+    assetPath: 'assets/garments/men/trouser.jpg',
+    fallbackIcon: Icons.straighten_outlined,
+  ),
+  _GarmentItem(
+    'Kurta-Pyjama',
+    assetPath: 'assets/garments/men/kurta_pyjama.jpg',
+    fallbackIcon: Icons.style,
+  ),
+  _GarmentItem(
+    'Pathani Suit',
+    assetPath: 'assets/garments/men/pathani_suit.jpg',
+    fallbackIcon: Icons.dry_cleaning,
+  ),
+  _GarmentItem(
+    'Sherwani',
+    assetPath: 'assets/garments/men/sherwani.jpg',
+    fallbackIcon: Icons.diamond_outlined,
+  ),
   _GarmentItem('Waistcoat', fallbackIcon: Icons.layers_outlined),
   _GarmentItem('Jacket', fallbackIcon: Icons.checkroom_outlined),
   _GarmentItem('2-Piece Suit', fallbackIcon: Icons.business_center_outlined),
 ];
 
 const _womenItems = [
-  _GarmentItem('Blouse',
-      assetPath: 'assets/garments/women/blouse.jpg',
-      fallbackIcon: Icons.dry_cleaning_outlined),
-  _GarmentItem('Kurti',
-      assetPath: 'assets/garments/women/kurti.jpg',
-      fallbackIcon: Icons.style_outlined),
-  _GarmentItem('Salwar',
-      assetPath: 'assets/garments/women/salwar.jpg',
-      fallbackIcon: Icons.straighten_outlined),
-  _GarmentItem('Anarkali',
-      assetPath: 'assets/garments/women/anarkali.jpg',
-      fallbackIcon: Icons.diamond_outlined),
-  _GarmentItem('Lehenga Choli',
-      assetPath: 'assets/garments/women/lehenga_choli.jpg',
-      fallbackIcon: Icons.auto_awesome_outlined),
-  _GarmentItem('Dress',
-      assetPath: 'assets/garments/women/dress.jpg',
-      fallbackIcon: Icons.checkroom_outlined),
-  _GarmentItem('Gown',
-      assetPath: 'assets/garments/women/gown.jpg',
-      fallbackIcon: Icons.star_outline),
-  _GarmentItem('Tunic',
-      assetPath: 'assets/garments/women/tunic.jpg',
-      fallbackIcon: Icons.layers_outlined),
-  _GarmentItem('Shirt',
-      assetPath: 'assets/garments/women/shirt.jpg',
-      fallbackIcon: Icons.dry_cleaning),
-  _GarmentItem('Co-ord Set',
-      assetPath: 'assets/garments/women/coord_set.jpg',
-      fallbackIcon: Icons.grid_view_outlined),
-  _GarmentItem('Skirt',
-      assetPath: 'assets/garments/women/skirt.jpg',
-      fallbackIcon: Icons.style),
-  _GarmentItem('Jumpsuit',
-      assetPath: 'assets/garments/women/jumpsuit.jpg',
-      fallbackIcon: Icons.person_outline),
-  _GarmentItem('Suit',
-      assetPath: 'assets/garments/women/suit.jpg',
-      fallbackIcon: Icons.business_center_outlined),
-  _GarmentItem('Pants',
-      assetPath: 'assets/garments/women/pants.jpg',
-      fallbackIcon: Icons.straighten),
+  _GarmentItem(
+    'Blouse',
+    assetPath: 'assets/garments/women/blouse.jpg',
+    fallbackIcon: Icons.dry_cleaning_outlined,
+  ),
+  _GarmentItem(
+    'Kurti',
+    assetPath: 'assets/garments/women/kurti.jpg',
+    fallbackIcon: Icons.style_outlined,
+  ),
+  _GarmentItem(
+    'Salwar',
+    assetPath: 'assets/garments/women/salwar.jpg',
+    fallbackIcon: Icons.straighten_outlined,
+  ),
+  _GarmentItem(
+    'Anarkali',
+    assetPath: 'assets/garments/women/anarkali.jpg',
+    fallbackIcon: Icons.diamond_outlined,
+  ),
+  _GarmentItem(
+    'Lehenga Choli',
+    assetPath: 'assets/garments/women/lehenga_choli.jpg',
+    fallbackIcon: Icons.auto_awesome_outlined,
+  ),
+  _GarmentItem(
+    'Dress',
+    assetPath: 'assets/garments/women/dress.jpg',
+    fallbackIcon: Icons.checkroom_outlined,
+  ),
+  _GarmentItem(
+    'Gown',
+    assetPath: 'assets/garments/women/gown.jpg',
+    fallbackIcon: Icons.star_outline,
+  ),
+  _GarmentItem(
+    'Tunic',
+    assetPath: 'assets/garments/women/tunic.jpg',
+    fallbackIcon: Icons.layers_outlined,
+  ),
+  _GarmentItem(
+    'Shirt',
+    assetPath: 'assets/garments/women/shirt.jpg',
+    fallbackIcon: Icons.dry_cleaning,
+  ),
+  _GarmentItem(
+    'Co-ord Set',
+    assetPath: 'assets/garments/women/coord_set.jpg',
+    fallbackIcon: Icons.grid_view_outlined,
+  ),
+  _GarmentItem(
+    'Skirt',
+    assetPath: 'assets/garments/women/skirt.jpg',
+    fallbackIcon: Icons.style,
+  ),
+  _GarmentItem(
+    'Jumpsuit',
+    assetPath: 'assets/garments/women/jumpsuit.jpg',
+    fallbackIcon: Icons.person_outline,
+  ),
+  _GarmentItem(
+    'Suit',
+    assetPath: 'assets/garments/women/suit.jpg',
+    fallbackIcon: Icons.business_center_outlined,
+  ),
+  _GarmentItem(
+    'Pants',
+    assetPath: 'assets/garments/women/pants.jpg',
+    fallbackIcon: Icons.straighten,
+  ),
 ];
 
 const _kidsItems = [
-  _GarmentItem('Shirt',
-      assetPath: 'assets/garments/kids/shirt.jpg',
-      fallbackIcon: Icons.dry_cleaning_outlined),
-  _GarmentItem('Kurta',
-      assetPath: 'assets/garments/kids/kurta.jpg',
-      fallbackIcon: Icons.style_outlined),
-  _GarmentItem('Dress',
-      assetPath: 'assets/garments/kids/dress.jpg',
-      fallbackIcon: Icons.checkroom_outlined),
-  _GarmentItem('Ethnic Set',
-      assetPath: 'assets/garments/kids/ethnic_set.jpg',
-      fallbackIcon: Icons.auto_awesome_outlined),
-  _GarmentItem('Pants',
-      assetPath: 'assets/garments/kids/pants.jpg',
-      fallbackIcon: Icons.straighten_outlined),
-  _GarmentItem('Shorts',
-      assetPath: 'assets/garments/kids/shorts.jpg',
-      fallbackIcon: Icons.straighten),
-  _GarmentItem('Gown',
-      assetPath: 'assets/garments/kids/gown.jpg',
-      fallbackIcon: Icons.star_outline),
-  _GarmentItem('Ghagra',
-      assetPath: 'assets/garments/kids/ghagra.jpg',
-      fallbackIcon: Icons.diamond_outlined),
-  _GarmentItem('Skirt',
-      assetPath: 'assets/garments/kids/skirt.jpg',
-      fallbackIcon: Icons.style),
-  _GarmentItem('Suit',
-      assetPath: 'assets/garments/kids/suit.jpg',
-      fallbackIcon: Icons.business_center_outlined),
+  _GarmentItem(
+    'Shirt',
+    assetPath: 'assets/garments/kids/shirt.jpg',
+    fallbackIcon: Icons.dry_cleaning_outlined,
+  ),
+  _GarmentItem(
+    'Kurta',
+    assetPath: 'assets/garments/kids/kurta.jpg',
+    fallbackIcon: Icons.style_outlined,
+  ),
+  _GarmentItem(
+    'Dress',
+    assetPath: 'assets/garments/kids/dress.jpg',
+    fallbackIcon: Icons.checkroom_outlined,
+  ),
+  _GarmentItem(
+    'Ethnic Set',
+    assetPath: 'assets/garments/kids/ethnic_set.jpg',
+    fallbackIcon: Icons.auto_awesome_outlined,
+  ),
+  _GarmentItem(
+    'Pants',
+    assetPath: 'assets/garments/kids/pants.jpg',
+    fallbackIcon: Icons.straighten_outlined,
+  ),
+  _GarmentItem(
+    'Shorts',
+    assetPath: 'assets/garments/kids/shorts.jpg',
+    fallbackIcon: Icons.straighten,
+  ),
+  _GarmentItem(
+    'Gown',
+    assetPath: 'assets/garments/kids/gown.jpg',
+    fallbackIcon: Icons.star_outline,
+  ),
+  _GarmentItem(
+    'Ghagra',
+    assetPath: 'assets/garments/kids/ghagra.jpg',
+    fallbackIcon: Icons.diamond_outlined,
+  ),
+  _GarmentItem(
+    'Skirt',
+    assetPath: 'assets/garments/kids/skirt.jpg',
+    fallbackIcon: Icons.style,
+  ),
+  _GarmentItem(
+    'Suit',
+    assetPath: 'assets/garments/kids/suit.jpg',
+    fallbackIcon: Icons.business_center_outlined,
+  ),
 ];
 
 const _categories = ['Men', 'Women', 'Kids'];
@@ -159,21 +220,29 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   void initState() {
     super.initState();
     _tabSlideCtrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 380));
+      vsync: this,
+      duration: const Duration(milliseconds: 380),
+    );
     _tabSlide = CurvedAnimation(
-        parent: _tabSlideCtrl, curve: Curves.easeInOutCubic);
+      parent: _tabSlideCtrl,
+      curve: Curves.easeInOutCubic,
+    );
 
     _fadeCtrl = AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 280),
-        value: 1.0);
-    _fadeAnim =
-        CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeOut);
+      vsync: this,
+      duration: const Duration(milliseconds: 280),
+      value: 1.0,
+    );
+    _fadeAnim = CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeOut);
 
     _drawerCtrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 340));
+      vsync: this,
+      duration: const Duration(milliseconds: 340),
+    );
     _drawerAnim = CurvedAnimation(
-        parent: _drawerCtrl, curve: Curves.easeInOutCubic);
+      parent: _drawerCtrl,
+      curve: Curves.easeInOutCubic,
+    );
   }
 
   @override
@@ -193,9 +262,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       setState(() => _selectedIndex = i);
       _fadeCtrl.forward();
     });
-    _tabSlideCtrl.animateTo(target,
-        curve: Curves.easeInOutCubic,
-        duration: const Duration(milliseconds: 360));
+    _tabSlideCtrl.animateTo(
+      target,
+      curve: Curves.easeInOutCubic,
+      duration: const Duration(milliseconds: 360),
+    );
   }
 
   void _openDrawer() {
@@ -259,8 +330,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 child: AnimatedBuilder(
                   animation: _drawerAnim,
                   builder: (ctx, _) => Container(
-                    color: Colors.black
-                        .withValues(alpha: 0.5 * _drawerAnim.value),
+                    color: Colors.black.withValues(
+                      alpha: 0.5 * _drawerAnim.value,
+                    ),
                   ),
                 ),
               ),
@@ -273,8 +345,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   width: w * 0.84,
                   child: child!,
                 ),
-                child:
-                    _LuxuryDrawer(onClose: _closeDrawer, navCtx: context),
+                child: _LuxuryDrawer(onClose: _closeDrawer, navCtx: context),
               ),
             ],
           ],
@@ -304,8 +375,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             clipBehavior: Clip.none,
             children: [
               _AnimatedIconBtn(
-                  icon: Icons.notifications_none_rounded,
-                  onTap: () {}),
+                icon: Icons.notifications_none_rounded,
+                onTap: () {},
+              ),
               Positioned(
                 right: 4,
                 top: 4,
@@ -335,7 +407,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           color: Colors.white.withValues(alpha: 0.82),
           borderRadius: BorderRadius.circular(22),
           border: Border.all(
-              color: AppColors.gold.withValues(alpha: 0.35), width: 1),
+            color: AppColors.gold.withValues(alpha: 0.35),
+            width: 1,
+          ),
           boxShadow: [
             BoxShadow(
               color: const Color(0xFFD4A84B).withValues(alpha: 0.18),
@@ -344,8 +418,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             ),
           ],
         ),
-        padding:
-            const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
         child: Row(
           children: [
             Container(
@@ -366,8 +439,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ],
               ),
-              child: const Icon(Icons.content_cut_rounded,
-                  color: Colors.white, size: 24),
+              child: const Icon(
+                Icons.content_cut_rounded,
+                color: Colors.white,
+                size: 24,
+              ),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -397,8 +473,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             ),
             const SizedBox(width: 8),
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
               decoration: BoxDecoration(
                 color: AppColors.primary,
                 borderRadius: BorderRadius.circular(20),
@@ -430,7 +505,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           color: Colors.white.withValues(alpha: 0.45),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
-              color: Colors.white.withValues(alpha: 0.65), width: 1.2),
+            color: Colors.white.withValues(alpha: 0.65),
+            width: 1.2,
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
@@ -481,8 +558,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                           i == 0
                               ? Icons.person_rounded
                               : i == 1
-                                  ? Icons.face_retouching_natural
-                                  : Icons.child_care_rounded,
+                              ? Icons.face_retouching_natural
+                              : Icons.child_care_rounded,
                           size: 15,
                           color: sel
                               ? Colors.white
@@ -493,9 +570,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                           duration: const Duration(milliseconds: 180),
                           style: TextStyle(
                             fontSize: 13,
-                            fontWeight: sel
-                                ? FontWeight.w700
-                                : FontWeight.w500,
+                            fontWeight: sel ? FontWeight.w700 : FontWeight.w500,
                             color: sel
                                 ? Colors.white
                                 : AppColors.primary.withValues(alpha: 0.7),
@@ -635,8 +710,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             ),
             const Spacer(),
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                 color: AppColors.gold,
                 borderRadius: BorderRadius.circular(8),
@@ -664,8 +738,11 @@ class _GarmentCard extends StatefulWidget {
   final _GarmentItem item;
   final String category;
   final Duration delay;
-  const _GarmentCard(
-      {required this.item, required this.category, required this.delay});
+  const _GarmentCard({
+    required this.item,
+    required this.category,
+    required this.delay,
+  });
   @override
   State<_GarmentCard> createState() => _GarmentCardState();
 }
@@ -681,11 +758,13 @@ class _GarmentCardState extends State<_GarmentCard>
   void initState() {
     super.initState();
     _entranceCtrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 520));
+      vsync: this,
+      duration: const Duration(milliseconds: 520),
+    );
     _scaleAnim = Tween<double>(begin: 0.82, end: 1.0).animate(
-        CurvedAnimation(parent: _entranceCtrl, curve: Curves.easeOutBack));
-    _fadeAnim =
-        CurvedAnimation(parent: _entranceCtrl, curve: Curves.easeOut);
+      CurvedAnimation(parent: _entranceCtrl, curve: Curves.easeOutBack),
+    );
+    _fadeAnim = CurvedAnimation(parent: _entranceCtrl, curve: Curves.easeOut);
     Future.delayed(widget.delay, () {
       if (mounted) _entranceCtrl.forward();
     });
@@ -764,8 +843,7 @@ class _GarmentCardState extends State<_GarmentCard>
           ),
           Container(
             color: Colors.white,
-            padding:
-                const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
             child: Text(
               widget.item.name,
               textAlign: TextAlign.center,
@@ -824,9 +902,13 @@ class _AnimatedIconBtnState extends State<_AnimatedIconBtn>
   void initState() {
     super.initState();
     _ctrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 100));
-    _scale = Tween<double>(begin: 1.0, end: 0.85).animate(
-        CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
+      vsync: this,
+      duration: const Duration(milliseconds: 100),
+    );
+    _scale = Tween<double>(
+      begin: 1.0,
+      end: 0.85,
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
   }
 
   @override
@@ -854,7 +936,9 @@ class _AnimatedIconBtnState extends State<_AnimatedIconBtn>
             color: Colors.white.withValues(alpha: 0.55),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-                color: Colors.white.withValues(alpha: 0.8), width: 1),
+              color: Colors.white.withValues(alpha: 0.8),
+              width: 1,
+            ),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.06),
@@ -892,11 +976,14 @@ class _FallbackLogo extends StatelessWidget {
             ),
           ),
           child: const Center(
-            child: Text('M',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                    fontSize: 15)),
+            child: Text(
+              'M',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+                fontSize: 15,
+              ),
+            ),
           ),
         ),
         const SizedBox(width: 6),
@@ -953,8 +1040,7 @@ class _LuxuryDrawer extends StatelessWidget {
                       child: Image.asset(
                         'assets/logo/metaia_logo.png',
                         height: 30,
-                        errorBuilder: (ctx, err, st) =>
-                            const _FallbackLogo(),
+                        errorBuilder: (ctx, err, st) => const _FallbackLogo(),
                       ),
                     ),
                     const Spacer(),
@@ -967,8 +1053,11 @@ class _LuxuryDrawer extends StatelessWidget {
                           color: Colors.white.withValues(alpha: 0.6),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Icon(Icons.close_rounded,
-                            color: AppColors.primary, size: 18),
+                        child: const Icon(
+                          Icons.close_rounded,
+                          color: AppColors.primary,
+                          size: 18,
+                        ),
                       ),
                     ),
                   ],
@@ -979,11 +1068,13 @@ class _LuxuryDrawer extends StatelessWidget {
                 height: 1,
                 margin: const EdgeInsets.symmetric(horizontal: 18),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    Colors.transparent,
-                    AppColors.gold.withValues(alpha: 0.5),
-                    Colors.transparent,
-                  ]),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      AppColors.gold.withValues(alpha: 0.5),
+                      Colors.transparent,
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 12),
@@ -1023,64 +1114,83 @@ class _LuxuryDrawer extends StatelessWidget {
                           final router = GoRouter.of(navCtx);
                           onClose();
                           Future.delayed(
-                              const Duration(milliseconds: 320),
-                              () => router.go('/profile'));
+                            const Duration(milliseconds: 320),
+                            () => router.go('/profile'),
+                          );
                         },
                       ),
                       _DrawerItem(
-                          icon: Icons.shopping_bag_outlined,
-                          label: 'My Orders',
-                          onTap: () {
-                            final router = GoRouter.of(navCtx);
-                            onClose();
-                            Future.delayed(const Duration(milliseconds: 320),
-                                () => router.go('/orders'));
-                          }),
+                        icon: Icons.shopping_bag_outlined,
+                        label: 'My Orders',
+                        onTap: () {
+                          final router = GoRouter.of(navCtx);
+                          onClose();
+                          Future.delayed(
+                            const Duration(milliseconds: 320),
+                            () => router.go('/orders'),
+                          );
+                        },
+                      ),
                       _DrawerItem(
-                          icon: Icons.history_rounded,
-                          label: 'Order History',
-                          onTap: () {
-                            final router = GoRouter.of(navCtx);
-                            onClose();
-                            Future.delayed(const Duration(milliseconds: 320),
-                                () => router.go('/order-history'));
-                          }),
+                        icon: Icons.history_rounded,
+                        label: 'Order History',
+                        onTap: () {
+                          final router = GoRouter.of(navCtx);
+                          onClose();
+                          Future.delayed(
+                            const Duration(milliseconds: 320),
+                            () => router.go('/order-history'),
+                          );
+                        },
+                      ),
                       _DrawerItem(
-                          icon: Icons.star_border_rounded,
-                          label: 'My Reviews',
-                          onTap: () {
-                            final router = GoRouter.of(navCtx);
-                            onClose();
-                            Future.delayed(const Duration(milliseconds: 320),
-                                () => router.go('/reviews'));
-                          }),
+                        icon: Icons.star_border_rounded,
+                        label: 'My Reviews',
+                        onTap: () {
+                          final router = GoRouter.of(navCtx);
+                          onClose();
+                          Future.delayed(
+                            const Duration(milliseconds: 320),
+                            () => router.go('/reviews'),
+                          );
+                        },
+                      ),
                       _DrawerItem(
-                          icon: Icons.settings_outlined,
-                          label: 'Settings',
-                          onTap: () {
-                            final router = GoRouter.of(navCtx);
-                            onClose();
-                            Future.delayed(const Duration(milliseconds: 320),
-                                () => router.go('/settings'));
-                          }),
+                        icon: Icons.settings_outlined,
+                        label: 'Settings',
+                        onTap: () {
+                          final router = GoRouter.of(navCtx);
+                          onClose();
+                          Future.delayed(
+                            const Duration(milliseconds: 320),
+                            () => router.go('/settings'),
+                          );
+                        },
+                      ),
                       _DrawerItem(
-                          icon: Icons.help_outline_rounded,
-                          label: 'Help & Support',
-                          onTap: () {
-                            final router = GoRouter.of(navCtx);
-                            onClose();
-                            Future.delayed(const Duration(milliseconds: 320),
-                                () => router.go('/help-support'));
-                          }),
+                        icon: Icons.help_outline_rounded,
+                        label: 'Help & Support',
+                        onTap: () {
+                          final router = GoRouter.of(navCtx);
+                          onClose();
+                          Future.delayed(
+                            const Duration(milliseconds: 320),
+                            () => router.go('/help-support'),
+                          );
+                        },
+                      ),
                       _DrawerItem(
-                          icon: Icons.info_outline_rounded,
-                          label: 'About METAIA',
-                          onTap: () {
-                            final router = GoRouter.of(navCtx);
-                            onClose();
-                            Future.delayed(const Duration(milliseconds: 320),
-                                () => router.go('/about'));
-                          }),
+                        icon: Icons.info_outline_rounded,
+                        label: 'About METAIA',
+                        onTap: () {
+                          final router = GoRouter.of(navCtx);
+                          onClose();
+                          Future.delayed(
+                            const Duration(milliseconds: 320),
+                            () => router.go('/about'),
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -1123,8 +1233,11 @@ class _LuxuryDrawer extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(24),
               ),
-              child: const Icon(Icons.person_rounded,
-                  color: Colors.white, size: 24),
+              child: const Icon(
+                Icons.person_rounded,
+                color: Colors.white,
+                size: 24,
+              ),
             ),
             const SizedBox(width: 12),
             Column(
@@ -1158,25 +1271,24 @@ class _LuxuryDrawer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14),
       child: Container(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
           color: Colors.white.withValues(alpha: 0.75),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
           children: [
-            _ContactRow(
-                icon: Icons.phone_outlined,
-                text: '+91 98765 43210'),
+            _ContactRow(icon: Icons.phone_outlined, text: '+91 98765 43210'),
             const Divider(height: 12, color: Color(0xFFE8DCC8)),
             _ContactRow(
-                icon: Icons.email_outlined,
-                text: 'priya.sharma@email.com'),
+              icon: Icons.email_outlined,
+              text: 'priya.sharma@email.com',
+            ),
             const Divider(height: 12, color: Color(0xFFE8DCC8)),
             _ContactRow(
-                icon: Icons.location_on_outlined,
-                text: '123 MG Road, Bangalore'),
+              icon: Icons.location_on_outlined,
+              text: '123 MG Road, Bangalore',
+            ),
           ],
         ),
       ),
@@ -1187,8 +1299,7 @@ class _LuxuryDrawer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14),
       child: Container(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [Color(0xFF4A0808), Color(0xFF7A1F1F)],
@@ -1237,8 +1348,11 @@ class _LuxuryDrawer extends StatelessWidget {
                 color: Colors.white.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Icon(Icons.inventory_2_outlined,
-                  color: AppColors.gold, size: 20),
+              child: const Icon(
+                Icons.inventory_2_outlined,
+                color: AppColors.gold,
+                size: 20,
+              ),
             ),
           ],
         ),
@@ -1319,8 +1433,11 @@ class _DrawerItem extends StatefulWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
-  const _DrawerItem(
-      {required this.icon, required this.label, required this.onTap});
+  const _DrawerItem({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
   @override
   State<_DrawerItem> createState() => _DrawerItemState();
 }
@@ -1334,7 +1451,9 @@ class _DrawerItemState extends State<_DrawerItem>
   void initState() {
     super.initState();
     _ctrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 100));
+      vsync: this,
+      duration: const Duration(milliseconds: 100),
+    );
     _bg = ColorTween(
       begin: Colors.white.withValues(alpha: 0.65),
       end: AppColors.surfaceLight,
@@ -1360,8 +1479,7 @@ class _DrawerItemState extends State<_DrawerItem>
         animation: _bg,
         builder: (ctx, _) => Container(
           margin: const EdgeInsets.only(bottom: 5),
-          padding:
-              const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           decoration: BoxDecoration(
             color: _bg.value,
             borderRadius: BorderRadius.circular(13),
@@ -1379,8 +1497,11 @@ class _DrawerItemState extends State<_DrawerItem>
                 ),
               ),
               const Spacer(),
-              const Icon(Icons.chevron_right_rounded,
-                  color: AppColors.textSecondary, size: 16),
+              const Icon(
+                Icons.chevron_right_rounded,
+                color: AppColors.textSecondary,
+                size: 16,
+              ),
             ],
           ),
         ),

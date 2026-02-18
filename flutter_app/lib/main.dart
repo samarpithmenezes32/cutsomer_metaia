@@ -65,8 +65,7 @@ class MyApp extends StatelessWidget {
         GoRoute(
           path: '/collections',
           pageBuilder: (context, state) {
-            final category =
-                state.uri.queryParameters['category'] ?? 'Men';
+            final category = state.uri.queryParameters['category'] ?? 'Men';
             return _slideFade(state, CollectionsScreen(category: category));
           },
         ),
@@ -78,73 +77,65 @@ class MyApp extends StatelessWidget {
         GoRoute(
           path: '/order-type',
           pageBuilder: (context, state) {
-            final category =
-                state.uri.queryParameters['category'] ?? 'Men';
-            final garment =
-                state.uri.queryParameters['garment'] ?? 'Shirt';
+            final category = state.uri.queryParameters['category'] ?? 'Men';
+            final garment = state.uri.queryParameters['garment'] ?? 'Shirt';
             return _slideFade(
-                state,
-                SelectOrderTypeScreen(
-                    category: category, garment: garment));
+              state,
+              SelectOrderTypeScreen(category: category, garment: garment),
+            );
           },
         ),
         GoRoute(
           path: '/design-requirements',
           pageBuilder: (context, state) {
-            final category =
-                state.uri.queryParameters['category'] ?? 'Men';
-            final garment =
-                state.uri.queryParameters['garment'] ?? 'Shirt';
+            final category = state.uri.queryParameters['category'] ?? 'Men';
+            final garment = state.uri.queryParameters['garment'] ?? 'Shirt';
             final orderType =
-                state.uri.queryParameters['orderType'] ??
-                    'Fresh Stitching';
+                state.uri.queryParameters['orderType'] ?? 'Fresh Stitching';
             return _slideFade(
               state,
               DesignRequirementsScreen(
-                  category: category,
-                  garment: garment,
-                  orderType: orderType),
+                category: category,
+                garment: garment,
+                orderType: orderType,
+              ),
             );
           },
         ),
         GoRoute(
           path: '/measurements',
           pageBuilder: (context, state) {
-            final category =
-                state.uri.queryParameters['category'] ?? 'Men';
-            final garment =
-                state.uri.queryParameters['garment'] ?? 'Shirt';
+            final category = state.uri.queryParameters['category'] ?? 'Men';
+            final garment = state.uri.queryParameters['garment'] ?? 'Shirt';
             final orderType =
-                state.uri.queryParameters['orderType'] ??
-                    'Fresh Stitching';
+                state.uri.queryParameters['orderType'] ?? 'Fresh Stitching';
             final fitPreference =
                 state.uri.queryParameters['fitPreference'] ?? 'Regular';
             return _slideFade(
               state,
               MeasurementsScreen(
-                  category: category,
-                  garment: garment,
-                  orderType: orderType,
-                  fitPreference: fitPreference),
+                category: category,
+                garment: garment,
+                orderType: orderType,
+                fitPreference: fitPreference,
+              ),
             );
           },
         ),
         GoRoute(
           path: '/select-tailor',
           pageBuilder: (context, state) {
-            final category =
-                state.uri.queryParameters['category'] ?? 'Men';
-            final garment =
-                state.uri.queryParameters['garment'] ?? 'Shirt';
+            final category = state.uri.queryParameters['category'] ?? 'Men';
+            final garment = state.uri.queryParameters['garment'] ?? 'Shirt';
             final orderType =
-                state.uri.queryParameters['orderType'] ??
-                    'Fresh Stitching';
+                state.uri.queryParameters['orderType'] ?? 'Fresh Stitching';
             return _slideFade(
               state,
               SelectTailorScreen(
-                  category: category,
-                  garment: garment,
-                  orderType: orderType),
+                category: category,
+                garment: garment,
+                orderType: orderType,
+              ),
             );
           },
         ),

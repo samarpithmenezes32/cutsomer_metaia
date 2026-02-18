@@ -26,8 +26,10 @@ class HelpSupportScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.arrow_back_rounded,
-                          color: AppColors.primary),
+                      icon: Icon(
+                        Icons.arrow_back_rounded,
+                        color: AppColors.primary,
+                      ),
                       onPressed: () => context.go('/welcome'),
                     ),
                     const Spacer(),
@@ -130,8 +132,7 @@ class _SupportCard extends StatelessWidget {
         ],
       ),
       child: ListTile(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
         leading: Container(
           width: 44,
           height: 44,
@@ -153,13 +154,13 @@ class _SupportCard extends StatelessWidget {
         ),
         subtitle: Text(
           subtitle,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey[600],
-          ),
+          style: TextStyle(fontSize: 12, color: Colors.grey[600]),
         ),
-        trailing: Icon(Icons.arrow_forward_ios_rounded,
-            size: 14, color: AppColors.primary),
+        trailing: Icon(
+          Icons.arrow_forward_ios_rounded,
+          size: 14,
+          color: AppColors.primary,
+        ),
         onTap: onTap,
       ),
     );

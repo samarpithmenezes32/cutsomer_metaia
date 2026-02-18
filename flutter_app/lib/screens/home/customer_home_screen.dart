@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:feather_icons/feather_icons.dart';
+import '../../theme/colors.dart';
 
 class CustomerHomeScreen extends StatefulWidget {
   const CustomerHomeScreen({super.key});
@@ -11,7 +11,7 @@ class CustomerHomeScreen extends StatefulWidget {
 class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
   String selectedCategory = 'Men';
 
-  final categories = ['Men', 'Women', 'Kids'];
+  final List<String> categories = ['Men', 'Women', 'Kids'];
 
   final Map<String, List<StyleItem>> styleData = {
     'Men': [
@@ -79,298 +79,304 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: const Color(0xFFF5E6D3), // goldLight
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Hero Section
-                Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xFFF5E6D3), // goldLight
-                        Color(0xFFD4AF37), // gold
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(32),
-                      bottomRight: Radius.circular(32),
-                    ),
+      backgroundColor: AppColors.goldLight,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Hero section with gradient
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [AppColors.goldLight, AppColors.gold],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
-                  padding: const EdgeInsets.all(28),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'METAIA Tailor',
-                            style: TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF7A1F1F), // maroon
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                          Icon(
-                            FeatherIcons.star,
-                            color: const Color(0xFF7A1F1F), // maroon
-                            size: 20,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Crafted fits. Effortless ordering.',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color(0xFF6B6B6B), // muted
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 48,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Navigate to order flow
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF7A1F1F), // maroon
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            elevation: 5,
-                          ),
-                          child: const Text(
-                            'Start an Order',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(32),
+                    bottomRight: Radius.circular(32),
                   ),
                 ),
-
-                const SizedBox(height: 28),
-
-                // Choose Category Section
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Choose Category',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF7A1F1F), // maroon
+                padding: const EdgeInsets.fromLTRB(28, 20, 28, 28),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Hero top row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'METAIA Tailor',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.maroon,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                        Icon(Icons.star, color: AppColors.maroon, size: 20),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Crafted fits. Effortless ordering.',
+                      style: TextStyle(fontSize: 16, color: AppColors.muted),
+                    ),
+                    const SizedBox(height: 20),
+                    // Primary CTA button
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Navigate to OrderFlow
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.maroon,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 5,
+                          shadowColor: AppColors.black.withValues(alpha: 0.2),
+                        ),
+                        child: const Text(
+                          'Start an Order',
+                          style: TextStyle(
+                            color: AppColors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: categories.map((category) {
-                          bool isSelected = selectedCategory == category;
-                          return Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 4,
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    selectedCategory = category;
-                                  });
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 12,
-                                    horizontal: 20,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: isSelected
-                                        ? const Color(0xFF7A1F1F)
-                                        : Colors.white,
-                                    border: Border.all(
-                                      color: isSelected
-                                          ? const Color(0xFF7A1F1F)
-                                          : const Color(0xFFE8D4A8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      category,
-                                      style: TextStyle(
-                                        color: isSelected
-                                            ? Colors.white
-                                            : const Color(0xFF7A1F1F),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                      ),
-                                    ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Choose Category section
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 28, 24, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Choose Category',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.maroon,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: categories.map((category) {
+                        final isActive = selectedCategory == category;
+                        return Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedCategory = category;
+                                });
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 12,
+                                  horizontal: 24,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: isActive
+                                      ? AppColors.maroon
+                                      : AppColors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color: isActive
+                                        ? AppColors.maroon
+                                        : AppColors.borderGold,
+                                    width: 2,
                                   ),
                                 ),
+                                child: Text(
+                                  category,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: isActive
+                                        ? AppColors.white
+                                        : AppColors.maroon,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Popular Styles section
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 28, 0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(right: 24),
+                      child: Text(
+                        'Popular Styles',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.maroon,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    SizedBox(
+                      height: 230,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: styleData[selectedCategory]?.length ?? 0,
+                        padding: const EdgeInsets.only(left: 24, right: 24),
+                        itemBuilder: (context, index) {
+                          final item = styleData[selectedCategory]![index];
+                          return GestureDetector(
+                            onTap: () {
+                              // Navigate to OrderFlow with category and style
+                            },
+                            child: Container(
+                              width: 200,
+                              margin: EdgeInsets.only(
+                                right:
+                                    index <
+                                        (styleData[selectedCategory]!.length -
+                                            1)
+                                    ? 16
+                                    : 0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppColors.white,
+                                borderRadius: BorderRadius.circular(24),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColors.black.withValues(alpha: 0.12),
+                                    blurRadius: 12,
+                                    offset: const Offset(0, 6),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(24),
+                                      topRight: Radius.circular(24),
+                                    ),
+                                    child: Image.network(
+                                      item.image,
+                                      width: 200,
+                                      height: 140,
+                                      fit: BoxFit.cover,
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                            return Container(
+                                              width: 200,
+                                              height: 140,
+                                              color: Colors.grey[300],
+                                              child: const Icon(Icons.image),
+                                            );
+                                          },
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(16),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          item.name,
+                                          style: const TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w700,
+                                            color: AppColors.maroon,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          item.category,
+                                          style: const TextStyle(
+                                            fontSize: 13,
+                                            color: AppColors.muted,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           );
-                        }).toList(),
+                        },
                       ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 28),
-
-                // Popular Styles Section
-                Padding(
-                  padding: const EdgeInsets.only(left: 24),
-                  child: Text(
-                    'Popular Styles',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF7A1F1F), // maroon
                     ),
-                  ),
+                  ],
                 ),
-                const SizedBox(height: 14),
-                SizedBox(
-                  height: 230,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    itemCount: styleData[selectedCategory]?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      final item = styleData[selectedCategory]![index];
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: Container(
-                          width: 200,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.12),
-                                blurRadius: 12,
-                                offset: const Offset(0, 6),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(24),
-                                  topRight: Radius.circular(24),
-                                ),
-                                child: Image.network(
-                                  item.image,
-                                  height: 140,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(16),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      item.name,
-                                      style: const TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xFF7A1F1F), // maroon
-                                      ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      item.category,
-                                      style: const TextStyle(
-                                        fontSize: 13,
-                                        color: Color(0xFF6B6B6B), // muted
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+              ),
 
-                const SizedBox(height: 28),
-
-                // Why METAIA Section
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Why METAIA',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF7A1F1F), // maroon
-                        ),
+              // Why METAIA section
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 28, 24, 100),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Why METAIA',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.maroon,
                       ),
-                      const SizedBox(height: 12),
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Precision tailoring on demand',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF7A1F1F), // maroon
-                              ),
-                            ),
-                            const SizedBox(height: 6),
-                            const Text(
-                              'Share your measurements, choose your design, and get stitched by vetted experts.',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF6B6B6B), // muted
-                              ),
-                            ),
-                          ],
-                        ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(18),
                       ),
-                    ],
-                  ),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Precision tailoring on demand',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.maroon,
+                            ),
+                          ),
+                          SizedBox(height: 6),
+                          Text(
+                            'Share your measurements, choose your design, and get stitched by vetted experts.',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: AppColors.muted,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-
-                const SizedBox(height: 100),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

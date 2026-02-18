@@ -1,165 +1,212 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../core/constants/api_constants.dart';
 
+/// HTTP wrapper using the `http` package (already in pubspec.yaml).
 class ApiService {
-  late final Dio _dio;
-  final FlutterSecureStorage _storage = const FlutterSecureStorage();
+  static String? _token;
 
-  ApiService() {
-    _dio = Dio(
-      BaseOptions(
-        baseUrl: ApiConstants.baseUrl,
-        connectTimeout: const Duration(seconds: 30),
-        receiveTimeout: const Duration(seconds: 30),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      ),
-    );
+  static Future<void> init() async {
+    final prefs = await SharedPreferences.getInstance();
+    _token = prefs.getString('auth_token');
+  }
 
-    _dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          // Add auth token to all requests
-          final token = await _storage.read(key: 'auth_token');
-          if (token != null) {
-            options.headers['Authorization'] = 'Bearer $token';
-          }
-          return handler.next(options);
-        },
-        onResponse: (response, handler) {
-          return handler.next(response);
-        },
-        onError: (DioException error, handler) async {
-          if (error.response?.statusCode == 401) {
-            // Token expired, logout user
-            await _storage.delete(key: 'auth_token');
-            await _storage.delete(key: 'user_data');
-          }
-          return handler.next(error);
-        },
-      ),
-    );
+  static Future<void> setToken(String? token) async {
+    _token = token;
+    final prefs = await SharedPreferences.getInstance();
+    if (token != null) {
+      await prefs.setString('auth_token', token);
+    } else {
+      await prefs.remove('auth_token');
+    }
+  }
+
+  Map<String, String> get _headers => {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        if (_token != null) 'Authorization': 'Bearer $_token',
+      };
+
+  Uri _uri(String path, [Map<String, String?>? query]) {
+    final base = Uri.parse(ApiConstants.baseUrl + path);
+    if (query == null) return base;
+    final cleaned = {
+      for (final e in query.entries)
+        if (e.value != null) e.key: e.value!,
+    };
+    return base.replace(queryParameters: cleaned.isEmpty ? null : cleaned);
+  }
+
+  Future<Map<String, dynamic>> _send(http.Response res) async {
+    if (res.statusCode == 401) await ApiService.setToken(null);
+    return {
+      'statusCode': res.statusCode,
+      'data': res.body.isNotEmpty ? jsonDecode(res.body) : null,
+    };
   }
 
   // Auth APIs
-  Future<Response> login(String email, String password) async {
-    return await _dio.post(ApiConstants.login, data: {
-      'email': email,
-      'password': password,
-    });
+  Future<Map<String, dynamic>> login(String email, String password) async {
+    final res = await http.post(_uri(ApiConstants.login),
+        headers: _headers,
+        body: jsonEncode({'email': email, 'password': password}));
+    return _send(res);
   }
 
-  Future<Response> register(Map<String, dynamic> data) async {
-    return await _dio.post(ApiConstants.register, data: data);
+  Future<Map<String, dynamic>> register(Map<String, dynamic> data) async {
+    final res = await http.post(_uri(ApiConstants.register),
+        headers: _headers, body: jsonEncode(data));
+    return _send(res);
   }
 
-  Future<Response> googleAuth(String idToken) async {
-    return await _dio.post(ApiConstants.googleAuth, data: {'idToken': idToken});
+  Future<Map<String, dynamic>> googleAuth(String idToken) async {
+    final res = await http.post(_uri(ApiConstants.googleAuth),
+        headers: _headers, body: jsonEncode({'idToken': idToken}));
+    return _send(res);
   }
 
-  Future<Response> forgotPassword(String email) async {
-    return await _dio.post(ApiConstants.forgotPassword, data: {'email': email});
+  Future<Map<String, dynamic>> forgotPassword(String email) async {
+    final res = await http.post(_uri(ApiConstants.forgotPassword),
+        headers: _headers, body: jsonEncode({'email': email}));
+    return _send(res);
   }
 
   // User APIs
-  Future<Response> getProfile() async {
-    return await _dio.get(ApiConstants.profile);
+  Future<Map<String, dynamic>> getProfile() async {
+    final res = await http.get(_uri(ApiConstants.profile), headers: _headers);
+    return _send(res);
   }
 
-  Future<Response> updateProfile(Map<String, dynamic> data) async {
-    return await _dio.put(ApiConstants.updateProfile, data: data);
+  Future<Map<String, dynamic>> updateProfile(Map<String, dynamic> data) async {
+    final res = await http.put(_uri(ApiConstants.updateProfile),
+        headers: _headers, body: jsonEncode(data));
+    return _send(res);
   }
 
-  Future<Response> getAddresses() async {
-    return await _dio.get(ApiConstants.addresses);
+  Future<Map<String, dynamic>> getAddresses() async {
+    final res = await http.get(_uri(ApiConstants.addresses), headers: _headers);
+    return _send(res);
   }
 
   // Order APIs
-  Future<Response> getOrders({String? status}) async {
-    return await _dio.get(
-      ApiConstants.orders,
-      queryParameters: status != null ? {'status': status} : null,
-    );
+  Future<Map<String, dynamic>> getOrders({String? status}) async {
+    final res = await http.get(
+        _uri(ApiConstants.orders, {'status': status}),
+        headers: _headers);
+    return _send(res);
   }
 
-  Future<Response> createOrder(Map<String, dynamic> orderData) async {
-    return await _dio.post(ApiConstants.createOrder, data: orderData);
+  Future<Map<String, dynamic>> createOrder(
+      Map<String, dynamic> orderData) async {
+    final res = await http.post(_uri(ApiConstants.createOrder),
+        headers: _headers, body: jsonEncode(orderData));
+    return _send(res);
   }
 
-  Future<Response> getOrderDetails(String orderId) async {
-    return await _dio.get('${ApiConstants.orderDetails}$orderId');
+  Future<Map<String, dynamic>> getOrderDetails(String orderId) async {
+    final res = await http.get(
+        _uri('${ApiConstants.orderDetails}$orderId'),
+        headers: _headers);
+    return _send(res);
   }
 
-  Future<Response> cancelOrder(String orderId) async {
-    return await _dio.put('${ApiConstants.orderDetails}$orderId/cancel');
+  Future<Map<String, dynamic>> cancelOrder(String orderId) async {
+    final res = await http.put(
+        _uri('${ApiConstants.orderDetails}$orderId/cancel'),
+        headers: _headers);
+    return _send(res);
   }
 
   // Tailor APIs
-  Future<Response> getTailors({
+  Future<Map<String, dynamic>> getTailors({
     String? specialization,
     double? minRating,
   }) async {
-    return await _dio.get(
-      ApiConstants.tailors,
-      queryParameters: {
-        'specialization': ?specialization,
-        'minRating': ?minRating,
-      },
-    );
+    final res = await http.get(
+        _uri(ApiConstants.tailors, {
+          'specialization': specialization,
+          'minRating': minRating?.toString(),
+        }),
+        headers: _headers);
+    return _send(res);
   }
 
-  Future<Response> getTailorDetails(String tailorId) async {
-    return await _dio.get('${ApiConstants.tailorDetails}$tailorId');
+  Future<Map<String, dynamic>> getTailorDetails(String tailorId) async {
+    final res = await http.get(
+        _uri('${ApiConstants.tailorDetails}$tailorId'),
+        headers: _headers);
+    return _send(res);
   }
 
   // Payment APIs
-  Future<Response> createPayment(String orderId, double amount) async {
-    return await _dio.post(ApiConstants.createPayment, data: {
-      'orderId': orderId,
-      'amount': amount,
-    });
+  Future<Map<String, dynamic>> createPayment(
+      String orderId, double amount) async {
+    final res = await http.post(_uri(ApiConstants.createPayment),
+        headers: _headers,
+        body: jsonEncode({'orderId': orderId, 'amount': amount}));
+    return _send(res);
   }
 
-  Future<Response> verifyPayment(Map<String, dynamic> paymentData) async {
-    return await _dio.post(ApiConstants.verifyPayment, data: paymentData);
+  Future<Map<String, dynamic>> verifyPayment(
+      Map<String, dynamic> paymentData) async {
+    final res = await http.post(_uri(ApiConstants.verifyPayment),
+        headers: _headers, body: jsonEncode(paymentData));
+    return _send(res);
   }
 
   // Notification APIs
-  Future<Response> getNotifications() async {
-    return await _dio.get(ApiConstants.notifications);
+  Future<Map<String, dynamic>> getNotifications() async {
+    final res =
+        await http.get(_uri(ApiConstants.notifications), headers: _headers);
+    return _send(res);
   }
 
-  Future<Response> markNotificationAsRead(String notificationId) async {
-    return await _dio.put('${ApiConstants.markAsRead}$notificationId/read');
+  Future<Map<String, dynamic>> markNotificationAsRead(
+      String notificationId) async {
+    final res = await http.put(
+        _uri('${ApiConstants.markAsRead}$notificationId/read'),
+        headers: _headers);
+    return _send(res);
   }
 
-  Future<Response> markAllNotificationsAsRead() async {
-    return await _dio.put(ApiConstants.markAllRead);
+  Future<Map<String, dynamic>> markAllNotificationsAsRead() async {
+    final res =
+        await http.put(_uri(ApiConstants.markAllRead), headers: _headers);
+    return _send(res);
   }
 
   // Measurement APIs
-  Future<Response> saveMeasurement(Map<String, dynamic> measurementData) async {
-    return await _dio.post(ApiConstants.saveMeasurement, data: measurementData);
+  Future<Map<String, dynamic>> saveMeasurement(
+      Map<String, dynamic> measurementData) async {
+    final res = await http.post(_uri(ApiConstants.saveMeasurement),
+        headers: _headers, body: jsonEncode(measurementData));
+    return _send(res);
   }
 
-  Future<Response> getMeasurements() async {
-    return await _dio.get(ApiConstants.measurements);
+  Future<Map<String, dynamic>> getMeasurements() async {
+    final res =
+        await http.get(_uri(ApiConstants.measurements), headers: _headers);
+    return _send(res);
   }
 
   // Review APIs
-  Future<Response> createReview(Map<String, dynamic> reviewData) async {
-    return await _dio.post(ApiConstants.createReview, data: reviewData);
+  Future<Map<String, dynamic>> createReview(
+      Map<String, dynamic> reviewData) async {
+    final res = await http.post(_uri(ApiConstants.createReview),
+        headers: _headers, body: jsonEncode(reviewData));
+    return _send(res);
   }
 
   // Categories & Styles
-  Future<Response> getCategories() async {
-    return await _dio.get(ApiConstants.categories);
+  Future<Map<String, dynamic>> getCategories() async {
+    final res =
+        await http.get(_uri(ApiConstants.categories), headers: _headers);
+    return _send(res);
   }
 
-  Future<Response> getStyles() async {
-    return await _dio.get(ApiConstants.styles);
+  Future<Map<String, dynamic>> getStyles() async {
+    final res = await http.get(_uri(ApiConstants.styles), headers: _headers);
+    return _send(res);
   }
 }
